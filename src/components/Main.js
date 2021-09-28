@@ -7,6 +7,7 @@ import Contact from '../views/Contact';
 import Profile from '../views/Profile';
 import Login from '../views/Login';
 import Register from '../views/Register';
+import BlogSingle from '../views/BlogSingle';
 
 export default class Main extends Component {
     render() {
@@ -48,12 +49,13 @@ export default class Main extends Component {
 
                 <main className="container">
                     <Switch>
-                        <Route exact path='/' render={ () => <Home /> } />
+                        <Route exact path='/' render={() => <Home posts={ this.props.posts } /> } />
                         <Route exact path='/about' render={ () => <About /> } />
                         <Route exact path='/contact' render={ () => <Contact /> } />
-                        <Route exact path='/profile' render={() => <Profile />} />
+                        <Route exact path='/profile' render={() => <Profile /> } />
                         <Route exact path='/login' render={() => <Login />} />
-                        <Route exact path='/register' render={() => <Register />} />
+                        <Route exact path='/register' render={() => <Register /> } />
+                        <Route exact path='/blog/:id' render={({ match }) => <BlogSingle posts={this.props.posts} match={match} /> } />
                     </Switch>
                 </main>
 

@@ -6,24 +6,24 @@ export default class Login extends Component {
             <div>
                 <h3>Login</h3>
                 <hr />
-                <div class="row">
-                    <div class="col-md-6 offset-md-3">
-                        <form action="{{ url_for('auth.login') }}" method="POST">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="email" placeholder="Email" />
+                <div className="row">
+                    <div className="col-md-6 offset-md-3">
+                        <form action="" method="POST">
+                            <div className="form-group">
+                                <input type="text" className="form-control" name="email" placeholder="Email" />
                             </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Password" />
+                            <div className="form-group">
+                                <input type="password" className="form-control" name="password" placeholder="Password" />
                             </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" name="remember_me" value="checked" />
+                            <div className="form-group">
+                                <div className="form-check">
+                                    <label className="form-check-label">
+                                        <input type="checkbox" className="form-check-input" name="remember_me" value="checked" />
                                         Remember Me
                                     </label>
                                 </div>
                             </div>
-                            <button class="btn btn-success btn-block">Login</button>
+                            <button className="btn btn-success btn-block">Login</button>
                         </form>
                     </div>
                 </div>
