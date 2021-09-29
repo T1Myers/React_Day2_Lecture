@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import '../App.css';
 import { Switch, Route, Link } from 'react-router-dom';
 import Home from '../views/Home';
-import About from '../views/About';
+import Shop from '../views/Shop';
 import Contact from '../views/Contact';
 import Profile from '../views/Profile';
 import Login from '../views/Login';
 import Register from '../views/Register';
-import BlogSingle from '../views/BlogSingle';
+import ProductSingle from '../views/ProductSingle';
 
 export default class Main extends Component {
     render() {
@@ -25,8 +25,12 @@ export default class Main extends Component {
                                 <li className="nav-item active">
                                     <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/about">About</Link>
+                                <li class="nav-item dropdown">
+                                    <Link class="nav-link dropdown-toggle" to="/shop" id="dropdownId" data-toggle="dropdown" aria-expanded="false">Shop</Link>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                        <Link class="dropdown-item" href="/Shop">Products</Link>
+                                        <Link class="dropdown-item" href=".">Cart</Link>
+                                    </div>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/contact">Contact</Link>
@@ -50,17 +54,27 @@ export default class Main extends Component {
                 <main className="container">
                     <Switch>
                         <Route exact path='/' render={() => <Home posts={ this.props.posts } /> } />
-                        <Route exact path='/about' render={ () => <About /> } />
+                        <Route exact path='/shop' render={ () => <Shop /> } />
                         <Route exact path='/contact' render={ () => <Contact /> } />
                         <Route exact path='/profile' render={() => <Profile /> } />
                         <Route exact path='/login' render={() => <Login />} />
                         <Route exact path='/register' render={() => <Register /> } />
-                        <Route exact path='/blog/:id' render={({ match }) => <BlogSingle posts={this.props.posts} match={match} /> } />
+                        <Route exact path='/product/:id' render={({ match }) => <ProductSingle products={this.props.products} match={match} /> } />
                     </Switch>
-                </main>
+                </main>;
 
-                <footer>
-
+                <footer class="bg-dark text-light">
+                    <div class="container">
+                        {/* <div class="row content-spacing"> */}
+                            <div class="col-md-3">
+                                <h6>Page Links</h6>
+                                <ul class="list-unstyled">
+                                    <li class="list-item"><a class="text-light" href="/">Home</a></li>
+                                    <li class="list-item"><a class="text-light" href="/contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        {/* </div> */}
+                    </div>
                 </footer>
             </React.Fragment>
         )

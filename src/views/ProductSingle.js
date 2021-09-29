@@ -13,7 +13,7 @@ export default class BlogSingle extends Component {
     }
 
     componentDidMount() {
-        fetch( 'http:localhost:5000/api/posts' )
+        fetch( 'https://fakebook-june-derek.herokuapp.com/api/shop/products' )
         .then( res => res.json() )
         .then( data => {
 

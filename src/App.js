@@ -1,43 +1,39 @@
  import React, { Component } from 'react'
  import Main from './components/Main';
  
-// YOU
-// DON'T "ADD" OR "REMOVE" ANYTHING FROM THE DOM.
-// YOU ONLY REPLACE THE ENTIRE DOM.
 class App extends Component {
   constructor() {
-    // console.log('Constructed');
     super();
-
     this.state = {
-      posts: []
-    }
+      photos: []
+    };
   }
-// ONLY IN THIS METHOD CAN YOU EXCUTE AN AJAX REQUEST
-  componentDidMount(){
-    console.log('Mounted');
-    fetch( '/data.json' )
-    .then( res => res.json() )
-    .then( data => {
-      // no can do
-      // this.state.post = data
 
-     // can do
-     this.setState({
-       posts: data
-     }) 
-    } )
+  componentDidMount() {
+    fetch("https://fakebook-june-derek.herokuapp.com/api/shop/products", { mode: 'no-cors' })
+    .then(response => {
+      if (!response.ok) {
+          throw Error("Error fetching the image");
+        }
+        return response.json()
+    .then(allData => {
+        this.setState({ images: allData });
+      })
+      .catch(err => {
+        throw Error(err.message);
+      });
+    }
+    );
   }
 
    render() {
-     console.log('Rendered');
-
      return (
-       <React.Fragment>
-         <Main posts={ this.state.posts } />
-       </React.Fragment>
-     )
+       <section className="app">
+         <p>Check these shoes out!</p>
+         {/* <PhotoContainer photos={this.state.photos} /> */}
+       </section>
+     );
    }
- }
- 
- export default App;
+} 
+
+export default App;
